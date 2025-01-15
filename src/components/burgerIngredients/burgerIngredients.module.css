@@ -1,28 +1,37 @@
-.conteiner{
+.conteiner {
   display: flex;
   overflow-y: scroll;
-  height: 80vh;
+  overflow-x: hidden;
+  max-height: 65vh;
   flex-direction: column;
   scrollbar-width: thin;
   scrollbar-color: rgba(133, 133, 173, 1) rgba(47, 47, 55, 1);
+  margin-top: 40px;
 }
 
-.list{
+.list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
-  width: 600px;
+  max-width: 600px;
+  row-gap: 32px;
+  column-gap: 24px;
+  padding-left: 16px;
 }
 
-.card{
+.card {
   list-style: none;
   text-align: center;
   max-width: 272px;
   max-height: 278px;
 }
 
-.image{
+.image {
   width: 240px;
   height: 120px;
+}
+
+.burgerIngredientsView {
+  max-width: 600px;
 }

@@ -96,6 +96,20 @@ class BurgerConstructor extends React.Component {
 				"image_large": "https://code.s3.yandex.net/react/code/mineral_rings-large.png",
 				"__v": 0
 			},
+			{
+				"_id": "60666c42cc7b410027a1a9bb",
+				"name": "Хрустящие минеральные кольца",
+				"type": "main",
+				"proteins": 808,
+				"fat": 689,
+				"carbohydrates": 609,
+				"calories": 986,
+				"price": 300,
+				"image": "https://code.s3.yandex.net/react/code/mineral_rings.png",
+				"image_mobile": "https://code.s3.yandex.net/react/code/mineral_rings-mobile.png",
+				"image_large": "https://code.s3.yandex.net/react/code/mineral_rings-large.png",
+				"__v": 0
+			},
 		],
 	};
 
@@ -119,8 +133,8 @@ class BurgerConstructor extends React.Component {
 		return (
 			<>
 				{filteredIngredients.map((ingredient) => (
-					<div>
-						<DragIcon />
+					<div className={burgerConstructorStyles.elementLine}>
+						{!bunType ? <DragIcon /> : <div className={burgerConstructorStyles.elementFake}></div>}
 						<ConstructorElement
 							type={bunType}
 							isLocked={bunType}
@@ -140,15 +154,20 @@ class BurgerConstructor extends React.Component {
 	}
 
 	render() {
-		//const { ingredients } = this.state;
 
 		return (
-			<div>
+			<div className={burgerConstructorStyles.burgerConstructorView}>
 				<ul className={burgerConstructorStyles.container}>
-					{this.renderSelectedIngredients('bun', 'top')}
-					{this.renderSelectedIngredients('sauce')}
-					{this.renderSelectedIngredients('main')}
-					{this.renderSelectedIngredients('bun', 'bottom')}
+					<div className='mb-4'>
+						{this.renderSelectedIngredients('bun', 'top')}
+					</div>
+					<div className={burgerConstructorStyles.list}>
+						{this.renderSelectedIngredients('sauce')}
+						{this.renderSelectedIngredients('main')}
+					</div>
+					<div className='mt-4'>
+						{this.renderSelectedIngredients('bun', 'bottom')}
+					</div>
 				</ul>
 				<div className={burgerConstructorStyles.results}>
 					<p className='text text_type_digits-medium'>

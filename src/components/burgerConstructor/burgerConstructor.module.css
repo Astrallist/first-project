@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  padding-left: 0px;
 }
 
 .card {
@@ -17,9 +18,37 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-top: 40px;
 }
 
 .bigIcon {
   width: 36px;
   height: 36px;
+  margin-right: 40px;
+}
+
+.list{
+  scrollbar-width: thin;
+  scrollbar-color: #8585AD #2F2F37;
+  overflow-y: scroll;
+  max-height: 464px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+}
+.elementFake{
+  width: 24px;
+  height: 24px;
+  display: inline;
+}
+
+.elementLine{
+display: flex;
+align-items: center;
+}
+
+.burgerConstructorView{
+  max-width: 600px;
+  margin-top: 84px;
 }

@@ -37,15 +37,15 @@ class BurgerIngredients extends React.Component {
 		};
 
 		return (
-			<div>
-				<h2 className='text text_type_main-medium'>
+			<div className='pb-10'>
+				<h2 className='text text_type_main-medium mb-6'>
 					{types[type]}
 				</h2>
 				<ul className={burgerIngredientsStyles.list}>
 					{filteredIngredients.map((ingredient) => (
 						<li key={ingredient.id} className={burgerIngredientsStyles.card}>
-							<img src={ingredient.image}></img>
-							<p className='text text_type_digits-default'>
+							<img src={ingredient.image} className='mr-4 ml-4'></img>
+							<p className='text text_type_digits-default mt-1 mb-1'>
 								{ingredient.price}
 								<CurrencyIcon />
 							</p>
@@ -68,8 +68,8 @@ class BurgerIngredients extends React.Component {
 
 		return (
 			<>
-				<div>
-					<h1 className="text text_type_main-large">Соберите бургер</h1>
+				<div className={burgerIngredientsStyles.burgerIngredientsView}>
+					<h1 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h1>
 					<div style={{ display: 'flex' }}>
 						<Tab value="bun" active={this.state.current === 'bun'} onClick={() => this.chanceTab('bun')}>
 							Булки

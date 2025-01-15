@@ -1,10 +1,10 @@
-.header{
+.header {
   width: 100vw;
   background-color: rgba(28, 28, 33, 1);
 }
 
-.headerConteiner{
-  width: 1240px;
+.headerConteiner {
+  max-width: 1280px;
   margin: 0 auto;
   align-items: center;
   text-align: center;
@@ -12,17 +12,25 @@
   grid-template-columns: 1fr 289.15px 1fr;
 }
 
-.startElements{
+.startElements {
   display: flex;
   justify-content: flex-start;
 }
 
-.logo{
-width: 289.15px;
-height: 40px;
+.logo {
+  width: 289.15px;
+  height: 40px;
 }
 
-.endElements{
+.endElements {
   display: flex;
   justify-content: flex-end;
+}
+
+.headerElement {
+  padding: 10px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
 }
