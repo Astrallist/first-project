@@ -1,0 +1,28 @@
+.header{
+  width: 100vw;
+  background-color: rgba(28, 28, 33, 1);
+}
+
+.headerConteiner{
+  width: 1240px;
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 289.15px 1fr;
+}
+
+.startElements{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logo{
+width: 289.15px;
+height: 40px;
+}
+
+.endElements{
+  display: flex;
+  justify-content: flex-end;
+}

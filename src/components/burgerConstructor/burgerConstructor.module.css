@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.image {
+  width: 80px;
+  height: 40px;
+}
+
+.results {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.bigIcon {
+  width: 36px;
+  height: 36px;
+}
