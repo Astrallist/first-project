@@ -43,33 +43,6 @@ class Modal extends React.Component {
 }
 
 
-
-/*
-const ModalWindow = ({ onClose, ingredient }) => {
-  if (!ingredient) return null;
-
-  return ReactDOM.createPortal(
-	<div className={styles.modalOverlay}>
-	  <div className={styles.modalContent}>
-		<button onClick={onClose} className={styles.closeButton}>×</button>
-		<h2>{ingredient.name}</h2>
-		<img src={ingredient.image_large} alt={ingredient.name} />
-		<p>Цена: {ingredient.price} ₽</p>
-		<p>Калории: {ingredient.calories}</p>
-		<p>Белки: {ingredient.proteins} г</p>
-		<p>Жиры: {ingredient.fat} г</p>
-		<p>Углеводы: {ingredient.carbohydrates} г</p>
-	  </div>
-	</div>,
-	document.getElementById("react-modals")
-  );
-};*/
-
-/*ModalWindow.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  ingredient: PropTypes.object,
-};*/
-
 export default Modal;
 
 
