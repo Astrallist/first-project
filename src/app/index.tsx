@@ -13,9 +13,9 @@ export const App = () => {
 
 	const fetchIngredients = async () => {
 		try {
-			const response = await fetch(`${API}/ingredients`); // Выполняем запрос
+			const response = await fetch(`${API}/ingredients`);
 			if (!response.ok) {
-				throw new Error(`Ошибка: ${response.status}`); // Обрабатываем ошибки HTTP
+				throw new Error(`Ошибка: ${response.status}`);
 			}
 			const data = await response.json();
 			setIngredients(data.data);
