@@ -9,6 +9,8 @@ import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-comp
 import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
+import Modal from '../modal/modal';
+
 class BurgerConstructor extends React.Component {
 	state = {
 		ingredients: [
@@ -111,6 +113,25 @@ class BurgerConstructor extends React.Component {
 				"__v": 0
 			},
 		],
+		selectedIngredient: null,
+		isIngredientModalOpen: false,
+		isOrderModalOpen: false,
+	};
+
+	openIngredientModal = (ingredient) => {
+		this.setState({ selectedIngredient: ingredient, isIngredientModalOpen: true });
+	};
+
+	closeIngredientModal = () => {
+		this.setState({ selectedIngredient: null, isIngredientModalOpen: false });
+	};
+
+	openOrderModal = () => {
+		this.setState({ isOrderModalOpen: true });
+	};
+
+	closeOrderModal = () => {
+		this.setState({ isOrderModalOpen: false });
 	};
 
 	renderSelectedIngredients(type, bunType) {
@@ -129,32 +150,25 @@ class BurgerConstructor extends React.Component {
 			main: 'Начинка',
 		};
 
-
 		return (
 			<>
 				{filteredIngredients.map((ingredient) => (
-					<div className={burgerConstructorStyles.elementLine}>
+					<div className={burgerConstructorStyles.elementLine} key={ingredient._id} onClick={() => this.openIngredientModal(ingredient)}>
 						{!bunType ? <DragIcon /> : <div className={burgerConstructorStyles.elementFake}></div>}
 						<ConstructorElement
 							type={bunType}
 							isLocked={bunType}
-							text={bunType ? `${ingredient.name} ${bunType === 'top' ? '(вверх)' : '(низ)'}` : `${ingredient.name}`}
+							text={bunType ? `${ingredient.name} ${bunType === 'top' ? '(вверх)' : '(низ)'}` : ingredient.name}
 							price={ingredient.price}
 							thumbnail={ingredient.image}
 						/>
 					</div>
-
-
-
-
-
 				))}
 			</>
 		);
 	}
 
 	render() {
-
 		return (
 			<div className={burgerConstructorStyles.burgerConstructorView}>
 				<ul className={burgerConstructorStyles.container}>
@@ -174,14 +188,26 @@ class BurgerConstructor extends React.Component {
 						5336
 					</p>
 					<CurrencyIcon className={burgerConstructorStyles.bigIcon} />
-					<Button htmlType="button" type="primary" size="large">
+					<Button htmlType="button" type="primary" size="large" onClick={this.openOrderModal}>
 						Оформить заказ
 					</Button>
 				</div>
+
+
+
+
+				{this.state.isIngredientModalOpen && (
+					<Modal type='ingredient' content={this.state.selectedIngredient} onClose={this.closeIngredientModal} />
+				)}
+
+				{this.state.isOrderModalOpen && (
+					<Modal type='order' content='099465' onClose={this.closeOrderModal}>
+						<p>Заказ оформлен</p>
+					</Modal>
+				)}
 			</div>
 		);
 	}
 }
-
 
 export default BurgerConstructor;

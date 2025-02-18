@@ -5,8 +5,6 @@ import burgerIngredientsStyles from './burgerIngredients.module.css';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 
-import data from '../../utils/data';
-
 class BurgerIngredients extends React.Component {
 	state = {
 		ingredients: [],
@@ -16,12 +14,11 @@ class BurgerIngredients extends React.Component {
 	componentDidMount() {
 		this.setState(prevState => ({
 			...prevState,
-			ingredients: data
 		}));
 	}
 
 	renderIngredientsByType(type) {
-		const { ingredients } = this.state;
+		const { ingredients } = this.props;
 		const filteredIngredients = ingredients.filter(
 			(ingredient) => ingredient.type === type
 		);
