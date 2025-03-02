@@ -19,7 +19,7 @@ export const App = () => {
 			}
 			const data = await response.json();
 			setIngredients(data.data);
-		} catch (err:any) {
+		} catch (err: any) {
 			setError(err.message);
 		}
 	};
@@ -34,13 +34,13 @@ export const App = () => {
 
 
 
-		return (
-			<>
-				<AppHeader />
-				<div className='content'>
-					<BurgerIngredients ingredients={ingredients}/>
-					<BurgerConstructor ingredients={ingredients}/>
-				</div>
-			</>
-		);
-	}
+	return (
+		<>
+			<AppHeader />
+			<div className='content'>
+				<BurgerIngredients ingredients={ingredients} />
+				<BurgerConstructor />
+			</div>
+		</>
+	);
+}
