@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import burgerIngredientsStyles from './burgerIngredients.module.css';
 
@@ -6,20 +6,24 @@ import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components
 import { Counter } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 
-class BurgerIngredients extends React.Component {
-	state = {
-		ingredients: [],
-		current: 'bun',
+import Modal from '../modal/modal';
+
+const BurgerIngredients = ({ ingredients }) => {
+	const [current, setCurrent] = useState('bun');
+	const [selectedIngredient, setSelectedIngredient] = useState(null);
+	const [isIngredientModalOpen, setIsIngredientModalOpen] = useState(false);
+
+	const openIngredientModal = (ingredient) => {
+		setSelectedIngredient(ingredient);
+		setIsIngredientModalOpen(true);
 	};
 
-	componentDidMount() {
-		this.setState(prevState => ({
-			...prevState,
-		}));
-	}
+	const closeIngredientModal = () => {
+		setSelectedIngredient(null);
+		setIsIngredientModalOpen(false);
+	};
 
-	renderIngredientsByType(type) {
-		const { ingredients } = this.props;
+	const renderIngredientsByType = (type) => {
 		const filteredIngredients = ingredients.filter(
 			(ingredient) => ingredient.type === type
 		);
@@ -41,12 +45,16 @@ class BurgerIngredients extends React.Component {
 				</h2>
 				<ul className={burgerIngredientsStyles.list}>
 					{filteredIngredients.map((ingredient) => (
-						<li key={ingredient.id} className={burgerIngredientsStyles.card}>
-							<img src={ingredient.image} className='mr-4 ml-4'></img>
+						<li
+							key={ingredient.id}
+							className={burgerIngredientsStyles.card}
+							onClick={() => openIngredientModal(ingredient)}
+						>
+							<img src={ingredient.image} className='mr-4 ml-4' alt={ingredient.name} />
 							<Counter count={0} size="default" extraClass="m-1" />
 							<p className='text text_type_digits-default mt-1 mb-1'>
 								{ingredient.price}
-								<CurrencyIcon />
+								<CurrencyIcon type="primary" />
 							</p>
 							<p className='text text_type_main-default'>{ingredient.name}</p>
 						</li>
@@ -54,41 +62,42 @@ class BurgerIngredients extends React.Component {
 				</ul>
 			</div>
 		);
-	}
+	};
 
-	chanceTab = (value) =>
-		this.setState(prevState => ({
-			...prevState,
-			current: value
-		}));
+	const changeTab = (value) => {
+		setCurrent(value);
+	};
 
-
-	render() {
-
-		return (
-			<>
-				<div className={burgerIngredientsStyles.burgerIngredientsView}>
-					<h1 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h1>
-					<div style={{ display: 'flex' }}>
-						<Tab value="bun" active={this.state.current === 'bun'} onClick={() => this.chanceTab('bun')}>
-							Булки
-						</Tab>
-						<Tab value="sauce" active={this.state.current === 'sauce'} onClick={() => this.chanceTab('sauce')}>
-							Соусы
-						</Tab>
-						<Tab value="main" active={this.state.current === 'main'} onClick={() => this.chanceTab('main')}>
-							Начинки
-						</Tab>
-					</div>
-					<div className={burgerIngredientsStyles.conteiner}>
-						{this.renderIngredientsByType('bun')}
-						{this.renderIngredientsByType('sauce')}
-						{this.renderIngredientsByType('main')}
-					</div>
+	return (
+		<>
+			<div className={burgerIngredientsStyles.burgerIngredientsView}>
+				<h1 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h1>
+				<div style={{ display: 'flex' }}>
+					<Tab value="bun" active={current === 'bun'} onClick={() => changeTab('bun')}>
+						Булки
+					</Tab>
+					<Tab value="sauce" active={current === 'sauce'} onClick={() => changeTab('sauce')}>
+						Соусы
+					</Tab>
+					<Tab value="main" active={current === 'main'} onClick={() => changeTab('main')}>
+						Начинки
+					</Tab>
 				</div>
-			</>
-		);
-	}
-}
+				<div className={burgerIngredientsStyles.conteiner}>
+					{renderIngredientsByType('bun')}
+					{renderIngredientsByType('sauce')}
+					{renderIngredientsByType('main')}
+				</div>
+				{isIngredientModalOpen && (
+					<Modal
+						type='ingredient'
+						content={selectedIngredient}
+						onClose={closeIngredientModal}
+					/>
+				)}
+			</div>
+		</>
+	);
+};
 
 export default BurgerIngredients;
