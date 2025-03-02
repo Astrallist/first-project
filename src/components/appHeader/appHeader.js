@@ -13,23 +13,23 @@ class AppHeader extends React.Component {
       <header className={appHeaderStyles.header}>
         <div className={appHeaderStyles.headerConteiner}>
           <div className={appHeaderStyles.startElements}>
-            <div className={appHeaderStyles.headerElement} >
+            <a href="#" className={appHeaderStyles.headerElement}>
               <BurgerIcon type="primary" className='mr-2' />
               <span className="text text_type_main-default mb-2 mt-2">Конструктор</span>
-            </div>
-            <div className={appHeaderStyles.headerElement}>
+            </a>
+            <a href="#" className={appHeaderStyles.headerElement}>
               <ListIcon type="secondary" className='mr-2' />
-              <span className="text text_type_main-default text_color_inactive"> Лента заказов</span>
-            </div>
+              <span className="text text_type_main-default text_color_inactive">Лента заказов</span>
+            </a>
           </div>
           <div className={appHeaderStyles.logo}>
             <Logo />
           </div>
           <div className={appHeaderStyles.endElements}>
-            <div className={appHeaderStyles.headerElement}>
+            <a href="#" className={appHeaderStyles.headerElement}>
               <ProfileIcon type="secondary" className='mr-2' />
               <span className="text text_type_main-default text_color_inactive">Личный кабинет</span>
-            </div>
+            </a>
           </div>
         </div>
       </header>
