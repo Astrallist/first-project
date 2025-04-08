@@ -16,6 +16,7 @@ import {
   addIngredient, setBun, removeIngredient, createOrder,
   moveIngredient
 } from '../../services/actions/constructor';
+import PropTypes from 'prop-types';
 
 const SortableIngredient = ({ ingredient, index, onRemove }) => {
   const ref = React.useRef(null);
@@ -68,6 +69,19 @@ const SortableIngredient = ({ ingredient, index, onRemove }) => {
       />
     </div>
   );
+};
+
+SortableIngredient.propTypes = {
+  ingredient: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(['bun', 'sauce', 'main']).isRequired,
+    uniqueId: PropTypes.string,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+  onRemove: PropTypes.func.isRequired,
 };
 
 const BurgerConstructor = () => {
@@ -146,7 +160,7 @@ const BurgerConstructor = () => {
 
     return ingredients.map((ingredient, index) => (
       <SortableIngredient
-        key={`${ingredient._id}-${index}`}
+        key={ingredient.uniqueId}
         ingredient={ingredient}
         index={index}
         onRemove={handleRemove}
