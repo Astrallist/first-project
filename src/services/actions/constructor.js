@@ -1,5 +1,6 @@
 import { createOrderApi } from '../../utils/api';
 import { updateIngredientsCounters } from './ingredients';
+import { v4 as uuid4 } from 'uuid';
 
 export const ADD_INGREDIENT = 'ADD_INGREDIENT';
 export const REMOVE_INGREDIENT = 'REMOVE_INGREDIENT';
@@ -11,7 +12,11 @@ export const CREATE_ORDER_FAILED = 'CREATE_ORDER_FAILED';
 
 
 export const addIngredient = (ingredient) => (dispatch, getState) => {
-  dispatch({ type: ADD_INGREDIENT, payload: ingredient });
+  const ingredientWithUniqueId = {
+    ...ingredient,
+    uniqueId: uuid4(),
+  };
+  dispatch({ type: ADD_INGREDIENT, payload: ingredientWithUniqueId});
   updateCounters(dispatch, getState);
 };
 
