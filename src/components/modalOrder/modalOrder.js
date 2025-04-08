@@ -8,7 +8,7 @@ const modalRoot = document.getElementById("react-modals");
 
 class ModalOrder extends React.Component {
 	render() {
-		const { orderNumber, onClose } = this.props;
+		const { orderNumber} = this.props;
 
 		return (
 			<div className={styles.content}>
@@ -23,7 +23,6 @@ class ModalOrder extends React.Component {
 }
 ModalOrder.propTypes = {
 	orderNumber: PropTypes.number,
-	onClose: PropTypes.func.isRequired
   };
   
 export default ModalOrder;
