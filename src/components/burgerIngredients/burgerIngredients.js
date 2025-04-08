@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentIngredient } from '../../services/actions/ingredient';
 import { useDrag } from 'react-dnd';
 
-const BurgerIngredients = ({ ingredients }) => {
+const BurgerIngredients = () => {
   const [currentTab, setCurrentTab] = useState('bun');
   const [isIngredientModalOpen, setIsIngredientModalOpen] = useState(false);
   const [selectedIngredient, setSelectedIngredient] = useState(null);
-
+  const { items: ingredients} = useSelector(state => state.ingredients);
   const { bun, ingredients: constructorIngredients } = useSelector(state => state.burgerConstructor);
 
   const getIngredientCounts = () => {
