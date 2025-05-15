@@ -1,0 +1,36 @@
+.conteiner {
+    text-align: center;
+    margin-top: 10vh;
+    text-align: left;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: 320px 480px;
+    grid-template-rows: 1fr;
+    grid-column-gap: 60px;
+    grid-row-gap: 0px;
+
+}
+
+.titles {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:32px;
+}
+
+.title{
+    margin: auto !important;
+    padding: auto !important;
+}
+
+.forms {
+    width: 480px;
+}
+
+.buttonSecondary {
+    margin: 0;
+    padding: 0;
+}
